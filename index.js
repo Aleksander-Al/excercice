@@ -46,7 +46,7 @@ const secondFunction = () => {
 }
 //secondFunction();
 
-//======UPR 2======UPR 2======UPR 2======UPR 2======UPR 2======UPR 2======UPR 2======UPR 2======UPR 2======UPR 2======UPR 2======UPR 2
+//======UPR2======UPR2======UPR2======UPR2======UPR2======UPR2======UPR2======UPR2======UPR2======UPR2======UPR2======UPR2=======
 
 let data = [
     10,
