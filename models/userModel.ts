@@ -1,4 +1,4 @@
-import { promises } from "fs";
+import {promises} from "fs";
 import {User} from "../types/User";
 
 export class UserModel {
@@ -7,8 +7,14 @@ export class UserModel {
         return JSON.parse(users);
         //console.log({formattedUsers})    // console.log as an object
     }
+    async getNewId():Promise<number>{
+        const users = await this.getUsers();
+        return users[users.length-1].id+1;
+    }
+    async updateUserList(user:User):Promise<boolean>{
+        const users = await this.getUsers();
+        users.push(user);
+        await promises.writeFile(__dirname+"/db.json",JSON.stringify(users));
+        return true;
+    }
 }
-
-(async () => {
-    await new UserModel().getUsers();
-})()

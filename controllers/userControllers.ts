@@ -8,6 +8,38 @@ export const getUsers = async(req: Request, res: Response) => {
     res.send(users)
 }
 
+type UserDataInput = {
+    username: string,
+    password: string
+}
+
+export const createUser = async(req: Request, res: Response) => {
+    const userData = req.body;
+    const userModel = new UserModel();
+    const id = await userModel.getNewId();
+    if(!userData.username){
+        return res.send({
+            status:400,
+            message:"Username not provided"
+        })
+    }
+    if(!userData.password){
+        return res.send({
+            status:400,
+            message:"Password not provided"
+        })
+    }
+    const user:User = {
+        id:id,
+        username:userData.username,
+        password:userData.password
+    }
+    await userModel.updateUserList(user);
+    console.log({id});
+    console.log(userData)
+    res.send(user)
+}
+
 export const login = (req: Request, res: Response) => {
     const loginRequest: LoginRequest = req.query;
     //console.log(loginRequest)

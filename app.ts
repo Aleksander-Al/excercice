@@ -1,12 +1,12 @@
 //const express = require("express")
 //import express from "express"
 import express = require("express")
-import {Application} from "express";
+import {Application, json} from "express";
 import {userRoutes} from "./routes/userRoutes";
 
 const app: Application = express();
-
-app.use("/", userRoutes)
+app.use(json());
+app.use("/", userRoutes);
 
 // CRUD OPERATIONS
 // get      read
